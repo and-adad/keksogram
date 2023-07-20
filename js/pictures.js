@@ -42,8 +42,14 @@ var randomShuffleArr = function (arr) {
 };
 
 var randomCutArr = function (arr) {
-  var length = getRandomFromInterval(0, arr.length);
-  var copyArr = arr.slice(1, 3);
+  var length = getRandomFromInterval(2, 3);
+  var copyArr = arr.slice(1, length);
+  return copyArr;
+};
+
+var randomDescription = function (arr) {
+  var length = getRandomFromInterval(0, arr.length-1);
+  var copyArr = arr[length];
   return copyArr;
 };
 
@@ -51,7 +57,8 @@ var createAdObj = function (i) {
   var adObj = {
     picture: 'photos/' + (i + 1) + '.jpg',
     likes: getRandomFromInterval(UserActions.LIKES.MIN, UserActions.LIKES.MAX),
-    comments: randomCutArr(randomShuffleArr(UserActions.COMMENTS))
+    comments: randomCutArr(randomShuffleArr(UserActions.COMMENTS)),
+    description: randomDescription(UserActions.DESCRIPTION)
   };
 
   return adObj;
